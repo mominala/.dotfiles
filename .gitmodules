@@ -1,6 +1,6 @@
 [submodule ".emacs.d"]
 	path = .emacs.d
-	url = ./.emacs.d/
+	url = https://github.com/mominala/.emacs.d.git
 [submodule ".tmux"]
 	path = .tmux
-	url = ./.tmux
+	url = https://github.com/mominala/.tmux.git
