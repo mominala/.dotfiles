@@ -1,0 +1,6 @@
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = ./.emacs.d/
+[submodule ".tmux"]
+	path = .tmux
+	url = ./.tmux
