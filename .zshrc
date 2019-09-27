@@ -1,19 +1,16 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.npm-packages/bin:$PATH
-unset MANPATH
-export MANPATH="$HOME/.npm-packages/share/man:$(manpath)"
+# Use emacs keybindings even if our EDITOR is set to vi
+bindkey -e
 
 [ ! -d ~/.zplug ] && git clone https://github.com/zplug/zplug ~/.zplug
 source ~/.zplug/init.zsh
 
 
-zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 
-zplug "plugins/git",   from:oh-my-zsh
-zplug "plugins/scd",   from:oh-my-zsh
-zplug "plugins/zsh-autosugggestions",   from:oh-my-zsh
-zplug "plugins/zsh-syntax-highlighting",   from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "b4b4r07/enhancd", use:"init.sh", at:2ccdaca
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 
 
 zplug 'junegunn/fzf', \
@@ -21,7 +18,6 @@ zplug 'junegunn/fzf', \
       use:'bin/{fzf,fzf-tmux}', \
       if:"[[ $OSTYPE == linux* || $OSTYPE == darwin* ]]", \
       hook-build:'./install --key-bindings --completion --no-update-rc'
-zplug "junegunn/fzf", from:github, use:"shell/*.zsh"
 
 
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
@@ -33,7 +29,7 @@ if ! zplug check --verbose; then
     fi
 fi
 
-zplug load --verbose
+zplug load
 
 alias ect="emacsclient"
 alias ecg="emacsclient -c"
@@ -50,9 +46,16 @@ source ~/.local/bin/virtualenvwrapper.sh
 # cuda stuff
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64/
 
+# path
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.npm-packages/bin:$PATH
+unset MANPATH
+export MANPATH="$HOME/.npm-packages/share/man:$(manpath)"
+
 
 # manage configs
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export ENHANCD_FILTER=fzf
