@@ -18,7 +18,7 @@ zplug 'junegunn/fzf', \
       use:'bin/{fzf,fzf-tmux}', \
       if:"[[ $OSTYPE == linux* || $OSTYPE == darwin* ]]", \
       hook-build:'./install --key-bindings --completion --no-update-rc'
-
+zplug "junegunn/fzf", use:"shell/*.zsh", defer:2
 
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
@@ -59,3 +59,4 @@ config config --local status.showUntrackedFiles no
 
 
 export ENHANCD_FILTER=fzf
+
